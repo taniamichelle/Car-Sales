@@ -17,7 +17,17 @@ export const initialState = {
 
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
+        case 'REMOVE_FEATURE':
+            return {
+                ...state,
+                // item: action.payload,
+                // todos: state.todos.filter(todo => !todo.completed)
+            }
+        case 'BUY_ITEM':
+            return {
+                ...state,
 
+            }
         default:
             return state;
     }
