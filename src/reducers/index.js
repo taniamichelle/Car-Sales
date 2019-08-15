@@ -22,7 +22,10 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 /* ...state.car.features brings in everything we have in our features array and
                 action.payload adds in the targeted object we want to add to our features array*/
-                features: [...state.car.features, action.payload],
+                car: {
+                    ...state.car,
+                    features: [...state.car.features, action.payload]
+                },
                 additionalPrice: state.additionalPrice + action.payload.price
             }
         case 'REMOVE_FEATURE':
@@ -31,16 +34,12 @@ export const reducer = (state = initialState, action) => {
                 /* access features array via car. 'feature' is an object and 'name' is the key we're accessing
                   action is invoked in order to utilize 'payload'(which is an object). If the name of the current 
                   feature.name does not match the action.payload (target) name, then add it to the new array we're creating w/ filter */
-                features: state.car.features.filter(feature => feature.name !== action.payload.name),
+                car: {
+                    ...state.car,
+                    features: state.car.features.filter(feature => feature.name !== action.payload.name)
+                },
                 additionalPrice: state.additionalPrice - action.payload.price
             }
-        // case 'BUY_ITEM':
-        //     return {
-        //         ...state,
-        //         item: action.payload,
-
-
-        //     }
         default:
             return state;
     }
