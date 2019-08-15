@@ -10,12 +10,14 @@ const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   // console.log('state', state);
 
-  const removeFeature = item => {
+  const removeFeature = name => {
     // dispatch an action here to remove an item
+    dispatch({ type: 'REMOVE_FEATURE', payload: name })
   };
 
-  const buyItem = item => {
+  const buyItem = name => {
     // dipsatch an action here to add an item
+    dispatch({ type: 'BUY_ITEM', payload: name })
   };
 
   return (
